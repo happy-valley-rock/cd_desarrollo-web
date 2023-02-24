@@ -1,0 +1,190 @@
+
+* {
+  margin         : 0px;
+  padding        : 0px;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  overflow-x             : hidden;
+  margin                 : 0px;
+  scroll-behavior        : smooth;
+  background-color       : palette('secondary');
+  -webkit-font-smoothing : antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body::-webkit-scrollbar {
+  width: 12px;
+}
+
+body::-webkit-scrollbar-track {
+  background: color('secondary');
+}
+
+body::-webkit-scrollbar-thumb {
+  background-color: transparentize(palette('light'), 0.8);
+  border-radius   : 24px;
+  border          : 2px solid palette('secondary');
+
+  &:hover {
+    background-color: transparentize(palette('primary'), 0.4);
+  }
+}
+
+main {
+  width: 100%;
+}
+
+h1, h2, h3, h4, h5, h6, a, p, span {
+  color      : palette('light');
+  font-family: $firstFamilyFont;
+}
+
+.layout {
+  display       : flex;
+  flex-direction: row-reverse;
+
+  &--hide {
+    display: none;
+  }
+
+  &--unhide {
+    animation: unhide-anim .5s linear;
+  }
+}
+
+.content {
+  width         : 100%;
+  display       : flex;
+  flex-direction: column;
+  overflow      : hidden;
+
+  &__layout {
+    min-height: 100vh;
+  }
+}
+
+.stripes {
+  z-index   : 1;
+  position  : absolute;
+  top       : 0px;
+  left      : 0px;
+  width     : 100%;
+  height    : 100%;
+  background: repeating-linear-gradient(
+    0deg,
+    transparentize(palette('light'), 0.95),
+    transparentize(palette('light'), 0.95) 4px,
+    transparent 0px,
+    transparent 100px
+  );
+
+  @include media("<=tablet") {
+    background: repeating-linear-gradient(
+      0deg,
+      transparentize(palette('light'), 0.95),
+      transparentize(palette('light'), 0.95) 4px,
+      transparent 0px,
+      transparent 50px
+    );
+  }
+}
+
+.card {
+  background-color: black;
+  padding         : 16px 24px;
+
+  @include media("<=tablet") {
+    padding: 8px 16px;
+  }
+}
+
+.label {
+  @include typography('headline6', 'primary', 'regular');
+  padding         : 16px 24px;
+  max-width       : 300px;
+  min-width       : 100px;
+  background-color: black;
+
+  @include media("<=tablet") {
+    padding: 8px 16px;
+    @include typography('subtitle1', 'primary', 'regular');
+  }
+
+
+  @include media("<=phone") {
+    padding: 4px 8px;
+    @include typography('body2', 'primary', 'regular');
+  }
+}
+
+.section {
+  h3 {
+    @include typography('headline4', 'primary');
+    margin: 0px;
+
+    @include media("<=tablet") {
+      @include typography('headline5', 'primary');
+    }
+
+    @include media("<=phone") {
+      @include typography('subtitle1', 'primary', 'semi-bold');
+    }
+  }
+
+  p {
+    @include typography('headline5', 'light', 'regular');
+
+    mark {
+      background-color: transparent;
+      color           : palette('primary');
+    }
+
+    @include media("<=tablet") {
+      @include typography('body1', 'light');
+    }
+  }
+}
+
+.element {
+  &--hidden {
+    opacity   : 0;
+    filter    : blur(5px);
+    transition: all 1s;
+  }
+
+  &--show {
+    opacity: 1;
+    filter: blur(0px);
+  }
+}
+
+.background-image-section {
+  width    : 100%;
+  z-index  : 0;
+  position : absolute;
+  top      : 0px;
+  left     : 50%;
+  transform: translateX(-50%);
+
+  &--reversed {
+    width    : 100%;
+    z-index  : 0;
+    position : absolute;
+    bottom   : 0px;
+    left     : 50%;
+    transform: translateX(-50%) rotateX(180deg);
+
+    @include media("<=tablet") {
+      width : auto;
+    }
+  }
+
+  @include media("<=tablet") {
+    width : auto;
+  }
+}

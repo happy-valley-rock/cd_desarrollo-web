@@ -1,0 +1,39 @@
+/* Section discography styles*/
+
+.discography {
+  padding-top    : 64px;
+  padding-bottom : 128px;
+  position       : relative;
+  min-height     : 100vh;
+  overflow       : hidden;
+  display        : flex;
+  flex-direction : column;
+  justify-content: space-between;
+  gap            : 32px;
+
+  &__top {
+    @include spacing();
+    display: flex;
+    z-index: 3;
+  }
+
+  &__bottom {
+    justify-content: space-around;
+    align-items    : center;
+    display        : flex;
+    flex-wrap      : wrap;
+    z-index        : 2;
+    height         : 100%;
+    width          : 100%;
+    outline        : 4px solid transparentize(palette('primary'), 0.6);
+    outline-offset : -15rem;
+
+    @include media("<=tablet") {
+      outline-offset : -10rem;
+    }
+
+    @include media("<=phone") {
+      outline-offset : -3rem;
+    }
+  }
+}

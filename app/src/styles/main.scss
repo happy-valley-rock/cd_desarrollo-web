@@ -1,0 +1,27 @@
+
+//Constans or initial variables
+
+@import './_fonts.scss';
+@import './_theme.scss';
+@import './_breakpoints.scss';
+
+
+//Some initial styles and functions or mixins helpers
+
+@import './_utils.scss';
+@import './_common.scss';
+
+
+//Styles for any component or view
+
+@import './components/_loader.scss';
+@import './components/_navbar.scss';
+@import './components/_footer.scss';
+@import './components/_card-album.scss';
+@import './components/_topbar.scss';
+
+@import './components/_landing.scss';
+@import './components/_history.scss';
+@import './components/_band.scss';
+@import './components/_discography.scss';
+@import './components/_gallery.scss';

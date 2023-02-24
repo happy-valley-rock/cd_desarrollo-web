@@ -1,0 +1,86 @@
+
+
+//Function for get the color from palette
+
+@function palette($name) {
+  @return map-get($map: $palette, $key: $name);
+};
+
+@function weight($name) {
+  @return map-get($map: $weight-type, $key: $name);
+};
+
+
+//Mixin for get a specific font from the font collection
+
+@mixin typography($name, $color: 'light', $weight: 'none') {
+  font-family   : map-get($map: map-get($map: $font-dict, $key: $name), $key: 'font-family');
+  font-style    : map-get($map: map-get($map: $font-dict, $key: $name), $key: 'font-style');
+  font-weight   : map-get($map: map-get($map: $font-dict, $key: $name), $key: 'font-weight');
+  font-size     : map-get($map: map-get($map: $font-dict, $key: $name), $key: 'font-size');
+  line-height   : map-get($map: map-get($map: $font-dict, $key: $name), $key: 'line-height');
+  letter-spacing: map-get($map: map-get($map: $font-dict, $key: $name), $key: 'letter-spacing');
+  text-transform: map-get($map: map-get($map: $font-dict, $key: $name), $key: 'text-transform');
+  color         : map-get($map: $palette, $key: $color);
+
+  @if $weight == 'none' {
+    font-weight: map-get($map: map-get($map: $font-dict, $key: $name), $key: 'font-weight');
+  }
+  @else {
+    font-weight: map-get($map: $weight-type, $key: $weight);
+  }
+}
+
+@mixin spacing($vertical: 0px) {
+  margin: $vertical 128px;
+
+  @include media("<LGdesktop") {
+    margin: $vertical 42px;
+  }
+
+  @include media("<=tablet") {
+    margin: $vertical 16px;
+  }
+};
+
+//Animation for fade-in in website
+
+@keyframes unhide-anim {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+//Spinner animation for loader component
+
+@keyframes spinner-anim-1 {
+  0% {
+    transform: scale(0);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+@keyframes spinner-anim-3 {
+  0% {
+    transform: scale(1);
+  }
+  100% {
+    transform: scale(0);
+  }
+}
+
+@keyframes spinner-anim-2 {
+  0% {
+    transform: translate(0, 0);
+  }
+  100% {
+    transform: translate(24px, 0);
+  }
+}
+
+@keyframes image-zoom-anim {
+  0%   { transform: translateX(-50%) scale(1); }
+  50% { transform: translateX(-50%) scale(1.2); }
+  100% { transform: translateX(-50%) scale(1); }
+}

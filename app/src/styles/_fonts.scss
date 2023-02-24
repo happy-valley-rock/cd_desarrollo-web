@@ -1,0 +1,22 @@
+
+// Font import SpaceGrotesk
+
+@font-face {
+  font-family: 'SpaceGrotesk';
+  font-style: normal;
+  src: local('SpaceGrotesk'), url(./assets/fonts/SpaceGrotesk-VariableFont_wght.ttf) format('truetype');
+}
+
+//Font import MADE Outer Sans
+
+@font-face {
+  font-family: 'MadeOuterSans';
+  font-style: 300;
+  src: local('MadeOuterSans'), url(./assets/fonts/MADE-OuterSans_Light.otf) format('opentype');
+}
+
+@font-face {
+  font-family: 'MadeOuterSansOutlined';
+  font-style: bold;
+  src: local('MadeOuterSansOutlined'), url(./assets/fonts/MADE-OuterSans-Outline_Bold.otf) format('opentype');
+}

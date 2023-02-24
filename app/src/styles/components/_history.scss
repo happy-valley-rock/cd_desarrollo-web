@@ -1,0 +1,74 @@
+/* Section history styles*/
+
+.history {
+  position       : relative;
+  min-height     : 100vh;
+  display        : flex;
+  flex-direction : column;
+  justify-content: space-between;
+
+  &__top {
+    z-index         : 2;
+    position        : relative;
+    width           : 100%;
+    overflow        : hidden;
+    height          : 350px;
+    display         : flex;
+    background-color: palette('secondary');
+
+    @include media("<=phone") {
+      height: 200px;
+    }
+
+    &-image {
+      width    : 100%;
+      position : absolute;
+      z-index  : 2;
+      bottom   : 0px;
+      left     : 50%;
+      transform: translateX(-50%);
+
+      @include media("<LGdesktop") {
+        width : auto;
+        height: 100%;
+      }
+    }
+  }
+
+  &__bottom {
+    @include spacing();
+    padding-top    : 42px;
+    display        : flex;
+    flex-direction : column;
+    gap            : 16px;
+    flex           : 1;
+    z-index        : 2;
+    height         : 100%;
+    align-items    : flex-start;
+    justify-content: center;
+  }
+
+  &__decorate-vector {
+    @include spacing();
+    z-index : 2;
+    height  : 300px;
+    position: absolute;
+    bottom  : 0px;
+    left    : -100px;
+
+    @include media("<LGdesktop") {
+      left  : -50px;
+      height: 150px;
+    }
+
+    @include media("<=tablet") {
+      left  : -20px;
+      height: 150px;
+    }
+
+    @include media("<=phone") {
+      left  : -40px;
+      bottom: -50px;
+    }
+  }
+}

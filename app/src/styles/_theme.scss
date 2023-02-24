@@ -1,0 +1,165 @@
+
+//Variables of the fonts
+
+$firstFamilyFont: 'Space Grotesk', sans-serif;
+$secondFamilyFont: 'MadeOuterSans', sans-serif;
+$thirdFamilyFont: 'MadeOuterSansOutlined', sans-serif;
+
+//Palette of colors for all the app
+
+$palette           : (
+  'light'          : #F8F8FF,
+  'accent'         : #121212,
+  'primary'        : #EE0000,
+  'secondary'      : #0E0E0E,
+);
+
+$weight-type   : (
+  'extra-light': 200,
+  'light'      : 300,
+  'regular'    : 400,
+  'medium'     : 500,
+  'semi-bold'  : 600,
+  'bold'       : 700,
+  'extra-bold' : 800
+);
+
+//Create variables for any type of font
+
+$headline1      : (
+  font-family   : $firstFamilyFont,
+  font-style    : normal,
+  font-weight   : map-get($map: $weight-type, $key: 'light'),
+  font-size     : 95px,
+  line-height   : auto,
+  letter-spacing: -1.5px
+);
+
+$headline2      : (
+  font-family   : $firstFamilyFont,
+  font-style    : normal,
+  font-weight   : map-get($map: $weight-type, $key: 'light'),
+  font-size     : 59px,
+  line-height   : auto,
+  letter-spacing: -0.5px
+);
+
+$headline3      : (
+  font-family   : $firstFamilyFont,
+  font-style    : normal,
+  font-weight   : map-get($map: $weight-type, $key: 'regular'),
+  font-size     : 48px,
+  line-height   : auto,
+  letter-spacing: 0px
+);
+
+$headline4      : (
+  font-family   : $firstFamilyFont,
+  font-style    : normal,
+  font-weight   : map-get($map: $weight-type, $key: 'regular'),
+  font-size     : 34px,
+  line-height   : auto,
+  letter-spacing: 0.25px
+);
+
+$headline5      : (
+  font-family   : $firstFamilyFont,
+  font-style    : normal,
+  font-weight   : map-get($map: $weight-type, $key: 'semi-bold'),
+  font-size     : 24px,
+  line-height   : auto,
+  letter-spacing: 0px
+);
+
+$headline6      : (
+  font-family   : $firstFamilyFont,
+  font-style    : normal,
+  font-weight   : map-get($map: $weight-type, $key: 'semi-bold'),
+  font-size     : 20px,
+  line-height   : auto,
+  letter-spacing: 0.15px
+);
+
+$subtitle1      : (
+  font-family   : $firstFamilyFont,
+  font-style    : normal,
+  font-weight   : map-get($map: $weight-type, $key: 'regular'),
+  font-size     : 16px,
+  line-height   : auto,
+  letter-spacing: 0.15px
+);
+
+$subtitle2      : (
+  font-family   : $firstFamilyFont,
+  font-style    : normal,
+  font-weight   : map-get($map: $weight-type, $key: 'medium'),
+  font-size     : 14px,
+  line-height   : auto,
+  letter-spacing: 0.1px
+);
+
+$body1          : (
+  font-family   : $firstFamilyFont,
+  font-style    : normal,
+  font-weight   : map-get($map: $weight-type, $key: 'regular'),
+  font-size     : 15px,
+  line-height   : auto,
+  letter-spacing: 0.5px
+);
+
+$body2          : (
+  font-family   : $firstFamilyFont,
+  font-style    : normal,
+  font-weight   : map-get($map: $weight-type, $key: 'regular'),
+  font-size     : 13px,
+  line-height   : auto,
+  letter-spacing: 0.25px
+);
+
+$button         : (
+  font-family   : $firstFamilyFont,
+  font-style    : normal,
+  font-weight   : map-get($map: $weight-type, $key: 'medium'),
+  font-size     : 13px,
+  line-height   : auto,
+  letter-spacing: 1.25px,
+  text-transform: uppercase
+);
+
+$caption        : (
+  font-family   : $firstFamilyFont,
+  font-style    : normal,
+  font-weight   : map-get($map: $weight-type, $key: 'regular'),
+  font-size     : 12px,
+  line-height   : auto,
+  letter-spacing: 0.4px
+);
+
+$overline       : (
+  font-family   : $firstFamilyFont,
+  font-style    : normal,
+  font-weight   : map-get($map: $weight-type, $key: 'regular'),
+  font-size     : 10px,
+  line-height   : auto,
+  letter-spacing: 1.5px,
+  text-transform: uppercase
+);
+
+
+//Save all the fonts in a 'collection'
+
+$font-dict   : (
+  'headline1': $headline1,
+  'headline2': $headline2,
+  'headline3': $headline3,
+  'headline4': $headline4,
+  'headline5': $headline5,
+  'headline6': $headline6,
+  'subtitle1': $subtitle1,
+  'subtitle2': $subtitle2,
+  'body1'    : $body1,
+  'body2'    : $body2,
+  'button'   : $button,
+  'caption'  : $caption,
+  'overline' : $overline
+);

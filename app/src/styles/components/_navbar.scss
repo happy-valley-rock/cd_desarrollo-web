@@ -1,0 +1,95 @@
+/* Navbar styles*/
+
+.navbar {
+  z-index         : 19;
+  top             : 0px;
+  position        : sticky;
+  width           : 300px;
+  background-color: palette('accent');
+  display         : flex;
+  flex-direction  : column;
+  align-items     : center;
+  height          : 100vh;
+  border-left     : 2px solid transparentize(palette('light'), 0.98);
+
+  @include media("<=tablet") {
+    transition: .3s;
+    position  : fixed;
+    width     : 100%;
+    transform : translateX(100%);
+  }
+
+  &__buttons {
+    display        : flex;
+    flex           : 1;
+    flex-direction : column;
+    justify-content: center;
+    text-align     : right;
+    text-decoration: none;
+
+    a {
+      @include typography('headline6', 'primary', 'regular');
+      color          : palette('primary');
+      display        : block;
+      padding        : 8px 42px;
+      text-decoration: none;
+      transition     : .2s;
+
+      @include media("<=tablet") {
+        font-size: 32px;
+      }
+
+      &:hover {
+        transition: .2s;
+        color     : palette('light');
+      }
+
+      @include media("<=tablet") {
+        &:active ~ .navbar {
+          background-color: blue;
+          transform : translateX(100%);
+        }
+      }
+    }
+
+    &-link--active::before {
+      content: '.'
+    }
+  }
+
+  &__bottom {
+    a {
+      text-decoration: none;
+    }
+
+    img {
+      height: 42px;
+    }
+  }
+
+  &__vector {
+    height   : 300px;
+    position : absolute;
+    left     : 0px;
+    bottom   : 15%;
+    transform: translateX(-50%);
+    pointer-events: none;
+
+    @include media("<=tablet") {
+      display: none;
+    }
+
+    @include media("<=desktop") {
+      height: 250px;
+    }
+
+    &--hidden {
+      opacity   : 0;
+      transition: 1s;
+    }
+
+    &--show {
+      opacity: 1;
+    }
+  }
+}

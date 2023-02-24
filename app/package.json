@@ -1,0 +1,29 @@
+{
+  "name": "luca-not-dead",
+  "version": "1.0.0",
+  "description": "",
+  "main": "src/index.html",
+  "scripts": {
+    "build-css": "node-sass --include-path scss src/styles/main.scss src/app.css",
+    "dev": "nodemon -e scss -x \"npm run build-css\"",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/EzequielEDL/cd_desarrollo-web.git"
+  },
+  "keywords": [],
+  "author": "Esequiel Delgado",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/EzequielEDL/cd_desarrollo-web/issues"
+  },
+  "homepage": "https://github.com/EzequielEDL/cd_desarrollo-web#readme",
+  "devDependencies": {
+    "node-sass": "^8.0.0",
+    "nodemon": "^2.0.20"
+  },
+  "dependencies": {
+    "dotenv": "^16.0.3"
+  }
+}
