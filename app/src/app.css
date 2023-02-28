@@ -554,7 +554,7 @@ h1, h2, h3, h4, h5, h6, a, p, span {
       letter-spacing: 16px; }
       @media (max-width: 1919px) {
         .landing__middle-title {
-          width: 100%; } }
+          width: 90%; } }
       @media (max-width: 900px) {
         .landing__middle-title {
           font-size: 72px;

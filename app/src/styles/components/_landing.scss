@@ -42,7 +42,7 @@
       letter-spacing: 16px;
 
       @include media("<LGdesktop") {
-        width: 100%;
+        width: 90%;
       }
 
       @include media("<=tablet") {

@@ -1,8 +1,14 @@
-const server = "http://localhost:8080";
+const server = "https://82.180.131.190:8080";
+const breakpoints = {
+  phone: 360,
+  tablet: 768,
+  desktop: 1366,
+  LGdesktop: 1920
+}
 
 
 function initObserverSelectNavbar() {
-  const [vectorSkull, vectorClock] = document.querySelectorAll('.navbar__vector--hidden');
+  const [vectorSkullBar, vectorClockBar, vectorSkull, vectorClock] = document.querySelectorAll('.navbar__vector--hidden');
   const sections = document.querySelectorAll('section');
   const navLinks = document.querySelectorAll('.navbar__buttons-link')
 
@@ -12,12 +18,20 @@ function initObserverSelectNavbar() {
         link.classList.add('navbar__buttons-link--active');
 
         if (currentSectionId === 'landing' || currentSectionId === 'history') {
+          vectorSkullBar.classList.add('navbar__vector--show');
           vectorSkull.classList.add('navbar__vector--show');
-        } else vectorSkull.classList.remove('navbar__vector--show');
+        } else {
+          vectorSkullBar.classList.remove('navbar__vector--show');
+          vectorSkull.classList.remove('navbar__vector--show');
+        }
 
         if (currentSectionId === 'discography') {
+          vectorClockBar.classList.add('navbar__vector--show');
           vectorClock.classList.add('navbar__vector--show');
-        } else vectorClock.classList.remove('navbar__vector--show');
+        } else {
+          vectorClockBar.classList.remove('navbar__vector--show');
+          vectorClock.classList.remove('navbar__vector--show');
+        }
 
         return;
       }
@@ -55,9 +69,32 @@ function initObserverFadeSections() {
   hiddenElements.forEach((elem) => observerElem.observe(elem));
 }
 
+function getBreakpointMatched() {
+  const viewWidthScreen = window.innerWidth;
+  if (viewWidthScreen <= breakpoints.phone) return 'phone';
+  if (viewWidthScreen <= breakpoints.tablet) return 'tablet';
+  if (viewWidthScreen <= breakpoints.desktop) return 'desktop';
+  if (viewWidthScreen <= breakpoints.LGdesktop) return 'LGdesktop';
+}
+
+function createQueryParams(source, breakpointMatch) {
+  const breakpoint = source[breakpointMatch];
+  let queryParams = `?`
+  console.log(breakpoint);
+  if (!breakpoint) return '';
+  if (breakpoint?.width) queryParams += `width=${breakpoint.width}`;
+  if (breakpoint?.height) queryParams += `height=${breakpoint.height}`;
+  return queryParams;
+}
+
 function fetchImages(imagesToLoad) {
+  const breakpointMatch = getBreakpointMatched();
+
   return new Promise((resolve, reject) => {
-    Promise.all(imagesToLoad.map((image) => fetch(`${server}/api/image/${image.src}`)))
+    Promise.all(imagesToLoad.map((image) => {
+      const queryParams = createQueryParams(image, breakpointMatch);
+      return fetch(`${server}/api/image/${image.src}${queryParams}`);
+    }))
     .then((imagesResponse) => {
       return imagesResponse.map(image => image.blob());
     })
@@ -80,20 +117,76 @@ function lazyLoadingImages() {
   layout.classList.add('layout--hide');
 
   const imagesToLoad = [
-    { id: "album-after-chabon", src: "album-after-chabon.jpg" },
-    { id: "album-corpinio-en-la-madrugada", src: "album-corpinio-en-la-madrugada.jpg" },
-    { id: "album-divididos-por-la-felicidad", src: "album-divididos-por-la-felicidad.jpg" },
-    { id: "album-fiebre", src: "album-fiebre.jpg" },
-    { id: "album-llegando-los-monos", src: "album-llegando-los-monos.jpg" },
-    { id: "album-perdedores-hermosos", src: "album-perdedores-hermosos.jpg" },
-    { id: "album-time-fate-love", src: "album-time-fate-love.jpg" },
-    { id: "background-grunge-landing", src: "background-grunge-landing.jpg" },
-    { id: "background-grunge-sections", src: "background-grunge-sections.jpg" },
-    { id: "history-singing-guitar", src: "history-singing-guitar.jpg" },
-    { id: "landing-band-playing", src: "landing-band-playing.jpg" },
-    { id: "sumo-members", src: "sumo-members.jpg" },
-    { id: "luca-jamaica-no-problem", src: "luca-jamaica-no-problem.jpg" },
-    { id: "background-grunge-footer", src: "background-grunge-footer.jpg" }
+    {
+      id: "album-after-chabon",
+      src: "album-after-chabon.jpg",
+      phone: { height: 150 }, tablet: { height: 200 }, desktop: { height: 300 }, LGdesktop: { height: 300 }
+    },
+    {
+      id: "album-corpinio-en-la-madrugada",
+      src: "album-corpinio-en-la-madrugada.jpg",
+      phone: { height: 150 }, tablet: { height: 200 }, desktop: { height: 300 }, LGdesktop: { height: 300 }
+    },
+    {
+      id: "album-divididos-por-la-felicidad",
+      src: "album-divididos-por-la-felicidad.jpg",
+      phone: { height: 150 }, tablet: { height: 200 }, desktop: { height: 300 }, LGdesktop: { height: 300 }
+    },
+    {
+      id: "album-fiebre",
+      src: "album-fiebre.jpg",
+      phone: { height: 150 }, tablet: { height: 200 }, desktop: { height: 300 }, LGdesktop: { height: 300 }
+    },
+    {
+      id: "album-llegando-los-monos",
+      src: "album-llegando-los-monos.jpg",
+      phone: { height: 150 }, tablet: { height: 200 }, desktop: { height: 300 }, LGdesktop: { height: 300 }
+    },
+    {
+      id: "album-perdedores-hermosos",
+      src: "album-perdedores-hermosos.jpg",
+      phone: { height: 150 }, tablet: { height: 200 }, desktop: { height: 300 }, LGdesktop: { height: 300 }
+    },
+    {
+      id: "album-time-fate-love",
+      src: "album-time-fate-love.jpg",
+      phone: { height: 150 }, tablet: { height: 200 }, desktop: { height: 300 }, LGdesktop: { height: 300 }
+    },
+    {
+      id: "background-grunge-landing",
+      src: "background-grunge-landing.jpg",
+      phone: { height: 800 }, tablet: { height: 1200 }, desktop: { width: 1366 }, LGdesktop: { width: 1920 }
+    },
+    {
+      id: "background-grunge-sections",
+      src: "background-grunge-sections.jpg",
+      phone: { height: 800 }, tablet: { height: 1200 }, desktop: { width: 1366 }, LGdesktop: { width: 1920 }
+    },
+    {
+      id: "background-grunge-footer",
+      src: "background-grunge-footer.jpg",
+      phone: { height: 800 }, tablet: { height: 1200 }, desktop: { width: 1366 }, LGdesktop: { width: 1920 }
+    },
+    {
+      id: "history-singing-guitar",
+      src: "history-singing-guitar.jpg",
+      phone: { height: 300 }, tablet: { height: 350 }, desktop: { height: 350 }, LGdesktop: { width: 1920 }
+    },
+    {
+      id: "landing-band-playing",
+      src: "landing-band-playing.jpg",
+      phone: { height: 300 }, tablet: { height: 350 }, desktop: { height: 350 }, LGdesktop: { width: 1920 }
+    },
+    {
+      id: "sumo-members",
+      src: "sumo-members.jpg",
+      phone: { width: 372 }, tablet: { width: 736 }, desktop: { width: 1034 }, LGdesktop: { width: 1400 }
+    },
+    {
+      id: "luca-jamaica-no-problem",
+      src: "luca-jamaica-no-problem.jpg",
+      desktop: { width: 300 }, LGdesktop: { width: 300 }
+    }
   ];
 
   fetchImages(imagesToLoad)
